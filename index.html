@@ -1867,10 +1867,13 @@ function webVoskOk(){
 function loadScript(src){ return new Promise((ok, bad) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = bad; document.head.appendChild(s); }); }
 async function webModelUrl(key, onProgress){
   if (WV.urls[key]) return WV.urls[key];
-  const info = (await (await fetch('models/models.json')).json())[key];
+  // 模型檔放在 models/ 資料夾，或直接放在網站最外層都可以
+  let base = 'models/', res0 = await fetch(base + 'models.json').catch(() => null);
+  if (!res0 || !res0.ok){ base = ''; res0 = await fetch('models.json'); }
+  const info = (await res0.json())[key];
   const parts = []; let got = 0;
   for (let i = 0; i < info.parts; i++){
-    const res = await fetch(`models/${key}.tar.gz.${i}`);
+    const res = await fetch(`${base}${key}.tar.gz.${i}`);
     if (!res.ok) throw new Error('model ' + res.status);
     const rd = res.body.getReader(), chunks = [];
     for (;;){ const {done, value} = await rd.read(); if (done) break; chunks.push(value); got += value.length; onProgress && onProgress(got / info.size); }

@@ -2,7 +2,7 @@
    - 網頁本體與教育部字典資料：安裝時就存好，沒網路也能查
    - 遊戲語音模型：第一次玩遊戲時下載，之後一直留著（版本更新也不用重新下載）
    - 字型、筆順資料等外部檔案：用過一次就存起來 */
-const VERSION = '20261115220859';
+const VERSION = '20261115224459';
 const CORE = 'ssd-core-' + VERSION;
 const MODELS = 'ssd-models-1';
 const RUNTIME = 'ssd-runtime-1';
@@ -50,7 +50,8 @@ self.addEventListener('fetch', e => {
       return;
     }
     const p = url.pathname;
-    if (p.includes('/models/') || p.includes('/lib/')) { e.respondWith(cacheFirst(req, MODELS)); return; }
+    // 語音模型（放在 models/ 或最外層都算）與函式庫：存一次就一直留著
+    if (p.includes('/models/') || p.includes('/lib/') || p.includes('.tar.gz.') || p.endsWith('/models.json')) { e.respondWith(cacheFirst(req, MODELS)); return; }
     e.respondWith(cacheFirst(req, CORE));
     return;
   }
