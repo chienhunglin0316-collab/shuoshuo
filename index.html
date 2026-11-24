@@ -386,6 +386,58 @@ header{gap:14px}
 .hub-card.c1{background:var(--t-pink);border-color:var(--pink)}
 .hub-card.c2{background:var(--t-blue);border-color:var(--blue)}
 .hub-card.c3{background:var(--t-green);border-color:var(--green)}
+.hub-card.c4{background:var(--t-orange);border-color:var(--orange)}
+.hub-card.c5{background:var(--t-purple);border-color:var(--purple)}
+.hub-card.c6{background:var(--t-yellow);border-color:var(--sun-deep)}
+/* 接龍 */
+.chain{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.chain .hud > div:nth-child(3){background:var(--t-pink)}
+.ch-list{display:flex;align-items:center;gap:8px;overflow-x:auto;padding:12px 6px 16px;min-height:132px;background:color-mix(in srgb,var(--card) 70%,transparent);border-radius:26px;scrollbar-width:thin}
+.ch-empty{margin:0 auto;font-family:var(--f-round);font-size:22px;color:var(--ink-soft);text-align:center;padding:0 12px}
+.ch-card{flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 16px 12px;border-radius:22px;border:4px solid var(--blue);background:var(--t-blue);box-shadow:0 5px 0 rgba(43,45,92,.12);position:relative;animation:popin .35s cubic-bezier(.3,1.6,.5,1)}
+.ch-card.pc{border-color:var(--pink);background:var(--t-pink)}
+.ch-card i{font-style:normal;font-family:var(--f-round);font-size:13px;color:var(--ink-soft)}
+.ch-card .w{font-family:var(--f-kai);font-weight:700;font-size:34px;line-height:1.15;white-space:nowrap}
+.ch-card .w.en{font-family:var(--f-en);font-weight:600;font-size:30px}
+.ch-card .w b{color:var(--red);font-size:1.15em}
+.ch-card small{font-size:14px;color:var(--ink-soft);white-space:nowrap}
+.ch-card .em{font-size:30px;line-height:1}
+.ch-arrow{flex:none;font-size:26px;color:var(--ink-soft)}
+.ch-target{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;min-height:20px}
+.ch-target:empty{display:none}
+.ch-big{display:grid;place-items:center;width:104px;height:104px;border-radius:28px;background:var(--sun);color:var(--sun-ink);font-family:var(--f-kai);font-weight:700;font-size:64px;line-height:1;box-shadow:0 7px 0 var(--sun-deep);animation:bob 2.6s ease-in-out infinite}
+.ch-big small{font-family:var(--f-sans);font-size:15px;font-weight:500;margin-top:-6px}
+.ch-big.en{font-family:var(--f-en);font-weight:600}
+.ch-tip{font-family:var(--f-round);font-size:26px;text-align:center}
+.ch-tip b{color:var(--red);font-family:var(--f-en)}
+.ch-heard{font-family:var(--f-round);font-size:22px;color:var(--ink-soft);text-align:center;min-height:30px}
+.ch-msg{font-family:var(--f-round);font-size:22px;text-align:center;min-height:32px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.ch-msg.ok{color:var(--green)}
+.ch-msg.warn{color:var(--red)}
+.ch-msg .en{font-family:var(--f-en)}
+.ch-sug{display:inline-flex;flex-direction:column;align-items:center;padding:6px 14px;border-radius:16px;background:var(--t-purple);color:var(--ink)}
+.ch-sug b{font-family:var(--f-kai);font-size:24px}
+.ch-sug b.en{font-family:var(--f-en)}
+.ch-sug small{font-family:var(--f-sans);font-size:13px;color:var(--ink-soft);max-width:220px}
+.ch-left{font-size:16px;color:var(--ink-soft)}
+.ch-ctrl{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center}
+.ch-mic{touch-action:none;-webkit-touch-callout:none;width:110px;height:110px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:44px;line-height:1;background:radial-gradient(circle at 35% 30%,#FFE58A,var(--sun) 60%);box-shadow:0 7px 0 var(--sun-deep),0 0 0 6px color-mix(in srgb,var(--sun) 30%,transparent);position:relative;flex:none}
+.ch-mic small{font-family:var(--f-round);font-size:15px;margin-top:4px;color:var(--sun-ink)}
+.ch-mic:active{transform:translateY(4px);box-shadow:0 2px 0 var(--sun-deep)}
+.ch-mic.listening{background:radial-gradient(circle at 35% 30%,#FF9A9D,var(--red) 60%)}
+.ch-mic.listening small{color:#fff}
+.ch-mic.listening::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:4px solid var(--red);animation:pulse 1.2s ease-out infinite}
+.ch-form{display:flex;gap:8px;flex:1;min-width:240px;max-width:460px}
+.ch-form input{flex:1;min-width:0;font-family:var(--f-round);font-size:24px;padding:10px 14px;border-radius:18px;border:3px solid var(--outline);background:var(--card);color:var(--ink);-webkit-user-select:text;user-select:text}
+.ch-form button{padding:0 20px;border-radius:18px;background:var(--blue);color:#fff;font-family:var(--f-round);font-size:22px;box-shadow:0 4px 0 color-mix(in srgb,var(--blue) 55%,#000)}
+.ch-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.ch-btns button{font-family:var(--f-round);font-size:20px;padding:10px 20px;border-radius:999px;box-shadow:0 4px 0 rgba(43,45,92,.14)}
+.ch-btns button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(43,45,92,.14)}
+.ch-help{background:var(--t-purple);color:var(--ink)}
+.ch-help:disabled{opacity:.45}
+.ch-pc{background:var(--t-green);color:var(--ink)}
+.ch-giveup{background:var(--t-pink);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.ch-card,.ch-big,.ch-mic.listening::after{animation:none}}
 /* 年級 */
 .grades{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:10px 0 16px}
 @media (max-width:640px){.grades{grid-template-columns:repeat(3,1fr)}}
@@ -605,15 +657,16 @@ function egWords(e, ch){
   return out;
 }
 // 每個字都要有造詞：先用字典例詞，再從簡編本詞目補足
+// 人名、書名、地名等專有名詞，以及古代用語，不適合當小朋友的造詞
+const PROPER = /^(\[名\]\n?)?(1\.)?(人名|書名|地名|水名|山名|國名|朝代名|篇名|官名|星名|姓|複姓|古國名|古地名|族名|樂府|詞牌|曲牌|宮名|縣名|郡名|州名|書篇名)/;
+const kidOK = w => { const r = DICT[w][0]; return !PROPER.test(r[3]) && !/^\[[^\]]+\]\n?(1\.)?(古代|舊時|古時)/.test(r[3]); };
+// 依「這個詞在教育部辭典裡被用到幾次」排序；簡編本的詞（國小程度）加分，二字詞優先
+const wordScore = w => { const r = DICT[w][0]; const use = r[7] || 0; return (use + 1) * (r[6] ? 0.7 : 2) / Math.pow(chars(w).length - 1, 1.3); };
 function wordsFor(ch, e){
   buildWordIndex();
-  // 人名、書名、地名等專有名詞，以及古代用語，不適合當小朋友的造詞
-  const PROPER = /^(\[名\]\n?)?(1\.)?(人名|書名|地名|水名|山名|國名|朝代名|篇名|官名|星名|姓|複姓|古國名|古地名|族名|樂府|詞牌|曲牌|宮名|縣名|郡名|州名|書篇名)/;
-  const kidOK = w => { const r = DICT[w][0]; return !PROPER.test(r[3]) && !/^\[[^\]]+\]\n?(1\.)?(古代|舊時|古時)/.test(r[3]); };
   const set = new Set(egWords(e, ch).filter(w => DICT[w] && kidOK(w)).slice(0, 6));
   const cand = (WORDIDX.get(ch) || []).filter(kidOK);
-  // 依「這個詞在教育部辭典裡被用到幾次」排序；簡編本的詞（國小程度）加分，二字詞優先
-  const score = w => { const r = DICT[w][0]; const use = r[7] || 0; return (use + 1) * (r[6] ? 0.7 : 2) / Math.pow(chars(w).length - 1, 1.3); };
+  const score = wordScore;
   cand.sort((a, b) => score(b) - score(a));
   for (const w of cand){ if (set.size >= 12) break; set.add(w); }
   return [...set];
@@ -687,7 +740,12 @@ function readBtn(btn, text, opts = {}){
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 let listenLang = 'zh-TW', listening = false, rec = null, finalText = '';
 const micBtn = $('#mic'), hear = $('#hear');
-function setHear(t, hint){ hear.textContent = t; hear.classList.toggle('hint', !!hint); }
+var CH = {on: false};   // 接龍遊戲的狀態（放在這裡，語音功能一開始就能用）
+function setHear(t, hint){ hear.textContent = t; hear.classList.toggle('hint', !!hint); const ch = document.getElementById('chHeard'); if (ch && CH.on) ch.textContent = t; }
+// 語音結果交給誰：平常是查字典；玩接龍時交給遊戲
+let voiceHook = null;
+function routeVoice(t){ if (voiceHook) voiceHook(t); else handleInput(t, {voice:true}); }
+function setMicUI(on){ micBtn.classList.toggle('listening', on); document.querySelectorAll('.ch-mic').forEach(b => b.classList.toggle('listening', on)); }
 $('#langZh').onclick = () => setLang('zh-TW');
 $('#langEn').onclick = () => setLang('en-US');
 function setLang(l){ listenLang = l; $('#langZh').classList.toggle('on', l === 'zh-TW'); $('#langEn').classList.toggle('on', l !== 'zh-TW');
@@ -697,15 +755,15 @@ const SR_MSG = {'not-allowed':'請允許使用麥克風才能用說的喔','no-s
 window.__sr = (type, text) => {
   if (G.nativeListen){ gameNativeSr(type, text); return; }   // 遊戲中的語音交給遊戲處理
   if (type === 'rms' || (type === 'final' && !listening)) return;   // 遊戲剛結束時晚到的結果，不要拿來查字
-  if (type === 'start'){ listening = true; micBtn.classList.add('listening'); setHear(listenLang === 'zh-TW' ? '我在聽，請說…' : "I'm listening…", true); }
+  if (type === 'start'){ listening = true; setMicUI(true); setHear(listenLang === 'zh-TW' ? '我在聽，請說…' : "I'm listening…", true); }
   else if (type === 'partial'){ if (text){ lastPartial = text; setHear('「' + text + '」'); } }
   else if (type === 'final'){ finalText = text; setHear('「' + text + '」'); }
   else if (type === 'error'){ if (text !== 'aborted') setHear(SR_MSG[text] || '沒聽清楚，再說一次好嗎？', true); }
   else if (type === 'end'){
-    clearRecTimers(); listening = false; micBtn.classList.remove('listening');
+    clearRecTimers(); listening = false; setMicUI(false);
     // 放開麥克風時，瀏覽器有時只給「還沒確定」的結果：也拿來查
     const t = finalText || lastPartial; finalText = ''; lastPartial = '';
-    if (t) handleInput(t, {voice:true});
+    if (t) routeVoice(t);
   }
 };
 /* 網頁版語音辨識的保護：平板的 Chrome 在 app 剛念完結果後，偶爾會「開始了卻不會結束」，
@@ -714,7 +772,7 @@ let lastPartial = '', recWatch = 0, stopWatch = 0, startWatch = 0;
 function clearRecTimers(){ clearTimeout(recWatch); clearTimeout(stopWatch); clearTimeout(startWatch); }
 function killRec(r){ if (!r) return; r.onstart = r.onresult = r.onerror = r.onend = null; try { r.abort(); } catch(e){} }
 function resetMic(msg){
-  clearRecTimers(); listening = false; micBtn.classList.remove('listening');
+  clearRecTimers(); listening = false; setMicUI(false);
   if (msg) setHear(msg, true);
 }
 function forceEnd(r){
@@ -722,7 +780,7 @@ function forceEnd(r){
   killRec(r); rec = null;
   const t = finalText || lastPartial; finalText = ''; lastPartial = '';
   resetMic(t ? '' : '沒聽清楚，再按一次麥克風說說看');
-  if (t) handleInput(t, {voice:true});
+  if (t) routeVoice(t);
 }
 function stopListen(){
   if (!listening) return;
@@ -741,7 +799,7 @@ function startListen(){
   if (!SR){ setHear(SR_MSG.unavailable, true); return; }
   // 先把舊的辨識完全收掉
   killRec(rec); rec = null;
-  listening = true; micBtn.classList.add('listening');
+  listening = true; setMicUI(true);
   setHear(listenLang === 'zh-TW' ? '準備中…' : 'Getting ready…', true);
   // app 正在念東西時，先停掉並等一下，讓麥克風拿得到聲音
   const wasSpeaking = !!(window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending));
@@ -1481,7 +1539,7 @@ function getBest(){ try { return JSON.parse(localStorage.getItem('ssd-best') || 
 function setBest(d, s){ const b = getBest(); if (!b[d] || s > b[d]){ b[d] = s; try { localStorage.setItem('ssd-best', JSON.stringify(b)); } catch(e){} return true; } return false; }
 const DIFF_NAME = {easy:'簡單', normal:'普通', hard:'困難'};
 
-function leaveGame(){ if (G.running || document.body.classList.contains('gaming')) endGame(true); if (typeof SP !== 'undefined') spellStop(); }
+function leaveGame(){ if (G.running || document.body.classList.contains('gaming')) endGame(true); if (typeof SP !== 'undefined') spellStop(); chainStop(); }
 function openGameIntro(){
   stopSpeak(); closeSheet(); leaveGame();
   if (listening) stopListen();
@@ -2283,9 +2341,12 @@ function openGameHub(){
       <button class="hub-card c1" data-g="zh"><span class="art">🤖🍬</span><b>念字打雷射</b><small>念出掉下來的國字，用雷射打掉它</small></button>
       <button class="hub-card c2" data-g="en"><span class="art">🐶🍎</span><b>英文圖片雷射</b><small>看圖說英文，說對就打掉</small></button>
       <button class="hub-card c3" data-g="spell"><span class="art">🔤⭐</span><b>英文拼字闖關</b><small>聽發音、看圖，把單字拼出來（一～六年級）</small></button>
+      <button class="hub-card c4" data-g="chzh"><span class="art">🐉🔗</span><b>中文詞語接龍</b><small>作文 → 文章 → 章魚……用最後一個字接下去</small></button>
+      <button class="hub-card c5" data-g="chidiom"><span class="art">📜🐉</span><b>成語接龍</b><small>一心一意 → 意氣風發……一定要接成語</small></button>
+      <button class="hub-card c6" data-g="chen"><span class="art">🔤🔗</span><b>英文單字接龍</b><small>apple → egg → grape……用最後一個字母接</small></button>
     </div>
   </section>`;
-  main.querySelectorAll('.hub-card').forEach(b => b.onclick = () => { audioUnlock(); ({zh: () => openGameIntro(), en: openEnIntro, spell: openSpellIntro})[b.dataset.g](); });
+  main.querySelectorAll('.hub-card').forEach(b => b.onclick = () => { audioUnlock(); ({zh: () => openGameIntro(), en: openEnIntro, spell: openSpellIntro, chzh: () => openChainIntro('zh'), chidiom: () => openChainIntro('idiom'), chen: () => openChainIntro('en')})[b.dataset.g](); });
 }
 
 /* 英文圖片雷射：說明與年級 */
@@ -2483,6 +2544,365 @@ function spellEnd(quit){
   $('#spAgain').onclick = () => startSpell(SP.grade);
   $('#spHub').onclick = openGameHub;
   if (done) speak(quit ? `你得了${SP.score}分！` : `闖關完成！你拿到${SP.stars}顆星星，得了${SP.score}分！`);
+}
+
+/* ================= 接龍遊戲：詞語接龍、成語接龍、英文單字接龍 =================
+   小朋友先說一個詞（或讓電腦先說），電腦用最後一個字（英文是最後一個字母）開頭接下去，
+   小朋友再用電腦那個詞的最後一個字接……
+   同音字開頭也算對（語音辨識常把字聽成同音字）。每局有 3 次「求救」。 */
+const EN_CHAIN_SRC = 'arm|手臂,art|藝術,aunt|阿姨,autumn|秋天,animal|動物,air|空氣,angry|生氣的,answer|答案,after|之後,boat|小船,boy|男孩,brother|兄弟,butter|奶油,button|鈕扣,class|班級,coat|外套,cold|冷的,color|顏色,cook|煮飯,cute|可愛的,dad|爸爸,dance|跳舞,day|白天,desk|書桌,doctor|醫生,doll|洋娃娃,dream|夢,dress|洋裝,drink|喝,earth|地球,east|東方,easy|簡單的,eat|吃,eleven|十一,english|英文,eraser|橡皮擦,evening|傍晚,face|臉,family|家庭,fan|電風扇,farm|農場,fast|快的,father|爸爸,fly|飛,food|食物,friend|朋友,fruit|水果,fun|好玩,game|遊戲,garden|花園,glass|玻璃杯,gold|金色,good|好的,grass|草,hair|頭髮,happy|快樂的,head|頭,hello|你好,home|家,honey|蜂蜜,hot|熱的,hungry|餓的,idea|主意,igloo|冰屋,ink|墨水,insect|昆蟲,inside|裡面,jam|果醬,jeans|牛仔褲,jelly|果凍,job|工作,jump|跳,kick|踢,kid|小孩,kitchen|廚房,kitten|小貓,knee|膝蓋,lake|湖,lamp|檯燈,leaf|葉子,lip|嘴唇,long|長的,love|愛,lunch|午餐,money|錢,morning|早上,mother|媽媽,mouth|嘴巴,music|音樂,name|名字,neck|脖子,nest|鳥巢,net|網子,new|新的,night|晚上,nurse|護士,number|數字,ocean|海洋,office|辦公室,old|老的,onion|洋蔥,open|打開,paper|紙,park|公園,party|派對,pink|粉紅色,play|玩,puppy|小狗,queen|皇后,question|問題,quick|快的,quiet|安靜的,quilt|棉被,quiz|小考,read|閱讀,river|河,rock|石頭,room|房間,rose|玫瑰,run|跑,sad|難過的,salt|鹽,sand|沙子,sea|海,shoe|鞋子,sing|唱歌,sister|姊妹,sky|天空,sleep|睡覺,sock|襪子,soup|湯,sugar|糖,summer|夏天,swim|游泳,table|桌子,tail|尾巴,tea|茶,teacher|老師,toe|腳趾,tooth|牙齒,uncle|叔叔,under|在下面,up|向上,use|使用,van|廂型車,vase|花瓶,vest|背心,violin|小提琴,voice|聲音,vegetable|蔬菜,walk|走路,wall|牆,watch|手錶,west|西方,wind|風,winter|冬天,wolf|狼,worm|蟲,xylophone|木琴,yard|院子,year|年,yes|是,yogurt|優格,young|年輕的,yummy|好吃的,yoyo|溜溜球,zero|零,zoo|動物園,zipper|拉鍊';
+let EN_CHAIN = null;
+function enChainMap(){
+  if (EN_CHAIN) return EN_CHAIN;
+  EN_CHAIN = new Map();
+  for (const lv of EN_BANK) for (const q of lv) EN_CHAIN.set(q.w, {zh: q.zh, e: q.e});
+  for (const x of EN_CHAIN_SRC.split(',')){ const [w, zh] = x.split('|'); if (!EN_CHAIN.has(w)) EN_CHAIN.set(w, {zh, e: ''}); }
+  return EN_CHAIN;
+}
+const CH_INFO = {
+  zh:    {name: '中文詞語接龍', art: '🐉🔗', unit: '詞', first: '先說一個詞（兩個字以上），例如「蘋果」。', lang: 'zh-TW'},
+  idiom: {name: '成語接龍',     art: '📜🐉', unit: '成語', first: '先說一個成語，例如「一心一意」。', lang: 'zh-TW'},
+  en:    {name: '英文單字接龍', art: '🔤🔗', unit: '單字', first: 'Say any English word！先說一個英文單字，例如 apple。', lang: 'en-US'}
+};
+const lastChar = w => { const c = chars(w); return c[c.length - 1]; };
+// 同音字也算：比較注音（不分聲調）
+function sameSound(a, b){ if (a === b) return true; const ka = readingKeys(a), kb = readingKeys(b); return !!(ka && kb && [...ka].some(k => kb.has(k))); }
+// 中文：用某個字開頭、適合小朋友的常用詞
+const zhStartCache = new Map();
+function zhStarts(c){
+  if (zhStartCache.has(c)) return zhStartCache.get(c);
+  buildWordIndex();
+  const out = (WORDIDX.get(c) || []).filter(w => chars(w)[0] === c && chars(w).length <= 3 && !DICT[w][0][6] && kidOK(w))
+    .sort((a, b) => wordScore(b) - wordScore(a));
+  zhStartCache.set(c, out);
+  return out;
+}
+// 成語：用某個字開頭的成語
+let IDSTART = null;
+function idiomStarts(c){
+  if (!IDSTART){
+    IDSTART = new Map();
+    const kid = new Set(Object.keys(KID_STORIES));
+    const rank = w => (kid.has(w) ? 1000 : 0) + (DICT[w] ? wordScore(w) : 0) + (chars(w).length === 4 ? 5 : 0);
+    for (const w in IDIOMS){
+      // 「即『翻雲覆雨』」這類只是別的成語的另一種說法，電腦不拿來出題（小朋友說了還是算對）
+      if (/^\s*(即|猶|同|亦作|也作|義同|參見)「/.test(IDIOMS[w][1] || '')) continue;
+      const f = chars(w)[0]; if (!IDSTART.has(f)) IDSTART.set(f, []); IDSTART.get(f).push(w);
+    }
+    for (const [k, v] of IDSTART) v.sort((a, b) => rank(b) - rank(a));
+  }
+  return IDSTART.get(c) || [];
+}
+// 用這個字（或同音字）開頭的候選
+function startsList(mode, unit){
+  if (mode === 'en') return [...enChainMap().keys()].filter(w => w[0] === unit);
+  const f = mode === 'idiom' ? idiomStarts : zhStarts;
+  let list = f(unit);
+  if (list.length < 3){
+    // 同音字開頭也可以
+    const keys = readingKeys(unit);
+    if (keys){
+      const more = [];
+      if (!SINGLES) SINGLES = Object.keys(DICT).filter(k => k.length === 1);
+      for (const k of SINGLES){ if (k !== unit && sameSound(k, unit)) more.push(...f(k).slice(0, 5)); if (more.length > 30) break; }
+      list = list.concat(more);
+    }
+  }
+  return list;
+}
+let SINGLES = null;
+const contCache = new Map();
+// 「後面好接」：用這個字（字母）開頭的常用詞有幾個（只算同一個字，不算同音字）
+function canContinue(mode, unit){
+  const key = mode + unit;
+  if (!contCache.has(key)){
+    const n = mode === 'en' ? [...enChainMap().keys()].filter(w => w[0] === unit).length
+      : mode === 'idiom' ? idiomStarts(unit).length
+      : zhStarts(unit).filter(w => chars(w).every(isCommonChar)).length;
+    contCache.set(key, n);
+  }
+  return contCache.get(key);
+}
+// 國小常見字：教育部簡編本裡最常出現的 1200 個字
+let COMMON = null;
+function isCommonChar(c){
+  if (!COMMON){ COMMON = new Set([...CHARFREQ.entries()].sort((a, b) => b[1] - a[1]).slice(0, 1200).map(x => x[0])); }
+  return COMMON.has(c);
+}
+// 電腦要說的詞：越常用、字越簡單越好
+function kidRank(mode, w){
+  if (mode === 'en') return (EN_BANK.findIndex(lv => lv.some(q => q.w === w)) + 1 || 4) * -1 + Math.random() * 2;
+  const common = chars(w).filter(isCommonChar).length / chars(w).length;
+  if (mode === 'idiom') return (KID_STORIES[w] ? 3 : 0) + common * 2 + (DICT[w] ? Math.log1p(wordScore(w)) * 0.3 : 0) + Math.random();
+  return common * 4 + Math.log1p(wordScore(w)) + Math.random() * 0.8;
+}
+const chUnit = w => CH.mode === 'en' ? w[w.length - 1] : lastChar(w);
+function chStartOK(w){
+  if (!CH.target) return true;
+  return CH.mode === 'en' ? w[0] === CH.target : sameSound(chars(w)[0], CH.target);
+}
+// 從小朋友說的話找出要接的詞
+function chParse(text){
+  if (CH.mode === 'en'){
+    const ws = enWords(text).filter(w => /^[a-z]{2,}$/.test(w) && !['i','a'].includes(w));
+    const w = (CH.target && ws.find(x => x[0] === CH.target)) || ws[0];
+    return w ? {w} : {bad: 'short'};
+  }
+  const s = stripAsk(text).replace(/[^\p{Script=Han}]/gu, '');
+  const cs = chars(s);
+  const isOk = w => CH.mode === 'idiom' ? !!IDIOMS[w] : !!(DICT[w] || IDIOMS[w]);
+  const tryAt = i => {
+    const max = CH.mode === 'idiom' ? 12 : 4, min = CH.mode === 'idiom' ? 3 : 2;
+    for (let n = Math.min(max, cs.length - i); n >= min; n--){ const w = cs.slice(i, i + n).join(''); if (isOk(w)) return w; }
+    return null;
+  };
+  if (CH.target) for (let i = 0; i < cs.length - 1; i++) if (sameSound(cs[i], CH.target)){ const w = tryAt(i); if (w) return {w}; }
+  for (let i = 0; i < cs.length - 1; i++){ const w = tryAt(i); if (w) return {w}; }
+  if (cs.length < (CH.mode === 'idiom' ? 3 : 2)) return {bad: 'short', s};
+  return {bad: CH.mode === 'idiom' ? 'notIdiom' : 'notWord', s};
+}
+function chZy(w){
+  if (CH.mode === 'en') return '';
+  if (DICT[w]) return (entry(w)[0].zy || '').replace(/（.*$/, '');
+  if (IDIOMS[w]) return IDIOMS[w][0] || '';
+  return '';
+}
+
+function openChainIntro(mode){
+  stopSpeak(); closeSheet(); leaveGame();
+  if (listening) stopListen();
+  const info = CH_INFO[mode], best = getBest()['chain-' + mode];
+  const rules = mode === 'en'
+    ? ['先說一個英文單字（或讓電腦先說）。', '電腦會用你那個單字的<b>最後一個字母</b>開頭，接一個新單字。', '你再用電腦那個單字的最後一個字母，接下一個單字。', '例如：apple → egg → grape → ……']
+    : mode === 'idiom'
+    ? ['先說一個成語（或讓電腦先說）。', '電腦會用你那個成語的<b>最後一個字</b>開頭，接一個新的成語。', '你再用電腦那個成語的最後一個字開頭，接下一個成語。<b>一定要是成語喔！</b>', '例如：一心一意 → 意氣風發 → 發憤圖強 → ……']
+    : ['先說一個詞（或讓電腦先說）。', '電腦會用你那個詞的<b>最後一個字</b>開頭，接一個新的詞。', '你再用電腦那個詞的最後一個字開頭，接下一個詞。', '例如：作文 → 文章 → 章魚 → ……'];
+  main.innerHTML = `<section class="panel game-intro">
+    <div class="g-art" aria-hidden="true">${info.art}</div>
+    <h2>${info.name}</h2>
+    <ol class="rules">${rules.map(r => `<li>${r}</li>`).join('')}</ol>
+    <p style="font-size:18px;margin:4px 0 14px">${mode === 'en' ? '' : '同音字開頭也算對喔！'}想不出來時，有 <b>3 次求救</b>機會。${best ? `<br>最高紀錄：接了 ${best} 個` : ''}</p>
+    <button class="big-start" id="chStart">開始接龍</button>
+  </section>`;
+  $('#chStart').onclick = () => { audioUnlock(); startChain(mode); };
+}
+
+async function startChain(mode){
+  stopSpeak(); leaveGame();
+  await dictReady; await idiomsReady;
+  Object.assign(CH, {on: true, mode, target: null, used: new Set(), list: [], score: 0, count: 0, helps: 3, helped: false, busy: false, prevLang: listenLang});
+  listenLang = CH_INFO[mode].lang;
+  voiceHook = t => chainSubmit(t);
+  document.body.classList.add('gaming');
+  const info = CH_INFO[mode];
+  main.innerHTML = `<section class="chain">
+    <div class="hud">
+      <div><span class="k">接了</span><b id="chCount">0</b></div>
+      <div><span class="k">分數</span><b id="chScore">0</b></div>
+      <div><span class="k">求救</span><b id="chHelpN">3</b></div>
+      <span class="spacer"></span>
+      <button class="hud-btn" id="chQuit">✕ 結束</button>
+    </div>
+    <div class="ch-list" id="chList"><p class="ch-empty">${info.first}</p></div>
+    <div class="ch-target" id="chTarget"></div>
+    <div class="ch-heard" id="chHeard"></div>
+    <div class="ch-msg" id="chMsg"></div>
+    <div class="ch-ctrl">
+      <button class="ch-mic" id="chMic" aria-label="按住說話">🎤<small>按住說</small></button>
+      <form class="ch-form" id="chForm" autocomplete="off">
+        <input id="chInput" type="text" placeholder="${mode === 'en' ? '也可以打字：英文單字' : '也可以打字'}" enterkeyhint="send">
+        <button type="submit">送出</button>
+      </form>
+    </div>
+    <div class="ch-btns">
+      <button class="ch-help" id="chHelp">🆘 求救（3）</button>
+      <button class="ch-pc" id="chPcFirst">🤖 讓電腦先說</button>
+      <button class="ch-giveup" id="chGiveUp">🏳️ 我接不下去了</button>
+    </div>
+  </section>`;
+  bindHoldMic($('#chMic'));
+  $('#chForm').onsubmit = ev => { ev.preventDefault(); const v = $('#chInput').value.trim(); if (v){ $('#chInput').value = ''; chainSubmit(v); } };
+  $('#chHelp').onclick = chainHelp;
+  $('#chPcFirst').onclick = () => { if (!CH.busy) chainComputer(null); };
+  $('#chGiveUp').onclick = () => chainEnd(true);
+  $('#chQuit').onclick = () => chainEnd(false);
+  chainPrompt();
+  speak(mode === 'en' ? '英文單字接龍開始！先說一個英文單字，或讓電腦先說。' : mode === 'idiom' ? '成語接龍開始！先說一個成語，或讓電腦先說。' : '詞語接龍開始！先說一個詞，或讓電腦先說。');
+}
+function chainStop(){
+  if (!CH.on) return;
+  CH.on = false; voiceHook = null;
+  if (CH.prevLang) listenLang = CH.prevLang;
+  if (listening) stopListen();
+  document.body.classList.remove('gaming');
+}
+function chMsg(t, kind){ const m = $('#chMsg'); if (m){ m.innerHTML = t; m.className = 'ch-msg' + (kind ? ' ' + kind : ''); } }
+function chainPrompt(){
+  const el = $('#chTarget'); if (!el) return;
+  $('#chPcFirst').hidden = !!CH.target || CH.list.length > 0;
+  if (!CH.target){ el.innerHTML = ''; return; }
+  if (CH.mode === 'en'){
+    el.innerHTML = `<span class="ch-big en">${esc(CH.target.toUpperCase())}</span><span class="ch-tip">說一個用 <b>${esc(CH.target.toUpperCase())}</b> 開頭的英文單字</span>`;
+  } else {
+    const zy = DICT[CH.target] ? (entry(CH.target)[0].zy || '').replace(/（.*$/, '') : '';
+    el.innerHTML = `<span class="ch-big">${esc(CH.target)}${zy ? `<small>${esc(zy)}</small>` : ''}</span><span class="ch-tip">說一個用「${esc(CH.target)}」開頭的${CH_INFO[CH.mode].unit}</span>`;
+  }
+}
+function chainCard(w, who){
+  const list = $('#chList'); if (!list) return;
+  const empty = list.querySelector('.ch-empty'); if (empty) empty.remove();
+  if (list.children.length) list.insertAdjacentHTML('beforeend', '<span class="ch-arrow" aria-hidden="true">➜</span>');
+  const card = document.createElement('button');
+  card.className = 'ch-card ' + who;
+  if (CH.mode === 'en'){
+    const m = enChainMap().get(w) || {};
+    card.innerHTML = `<i>${who === 'kid' ? '你' : '電腦'}</i>${m.e ? `<span class="em">${m.e}</span>` : ''}<span class="w en">${esc(w.slice(0, -1))}<b>${esc(w.slice(-1))}</b></span>${m.zh ? `<small>${esc(m.zh)}</small>` : ''}`;
+    card.onclick = () => sayOne(w, 'en-US', 0.8);
+  } else {
+    const cs = chars(w);
+    card.innerHTML = `<i>${who === 'kid' ? '你' : '電腦'}</i><span class="w">${esc(cs.slice(0, -1).join(''))}<b>${esc(cs[cs.length - 1])}</b></span><small>${esc(chZy(w))}</small>`;
+    card.onclick = () => sayOne(w, 'zh-TW', 0.8);
+  }
+  list.appendChild(card);
+  CH.list.push({w, who});
+  card.scrollIntoView({block: 'nearest', inline: 'end', behavior: 'smooth'});
+}
+function chainUpdateHud(){
+  $('#chCount') && ($('#chCount').textContent = CH.count);
+  $('#chScore') && ($('#chScore').textContent = CH.score);
+  $('#chHelpN') && ($('#chHelpN').textContent = CH.helps);
+  const h = $('#chHelp'); if (h){ h.textContent = `🆘 求救（${CH.helps}）`; h.disabled = CH.helps <= 0; }
+}
+function chainSubmit(text){
+  if (!CH.on || CH.busy) return;
+  const heard = $('#chHeard'); if (heard) heard.textContent = '「' + text + '」';
+  const r = chParse(text);
+  const u = CH_INFO[CH.mode].unit;
+  if (r.bad){
+    const say = {short: CH.mode === 'en' ? '沒聽清楚，再說一個英文單字好嗎？' : CH.mode === 'idiom' ? (r.s && chars(r.s).length === 2 ? `「${r.s}」不是成語喔，成語通常是四個字，再想想看！` : '成語通常是四個字，再說一次好嗎？') : `要說兩個字以上的${u}喔，再試一次！`,
+      notWord: `字典裡找不到「${r.s}」，換一個詞試試看！`, notIdiom: `「${r.s}」好像不是成語喔，再想想看！`}[r.bad];
+    chMsg(say, 'warn'); sfx('buzz'); speak(say.replace(/[「」]/g, '')); return;
+  }
+  const w = r.w;
+  if (!chStartOK(w)){
+    const t = CH.mode === 'en' ? CH.target.toUpperCase() : CH.target;
+    const say = CH.mode === 'en' ? `${w} 不是用 ${t} 開頭喔，再想一個！` : `「${w}」不是用「${t}」開頭喔，再想一個！`;
+    chMsg(say, 'warn'); sfx('buzz'); speak(say.replace(/[「」]/g, '')); return;
+  }
+  if (CH.used.has(w)){ const say = `「${w}」已經接過了，換一個吧！`; chMsg(say, 'warn'); sfx('buzz'); speak(say.replace(/[「」]/g, '')); return; }
+  CH.used.add(w);
+  chainCard(w, 'kid');
+  CH.count++; CH.score += CH.helped ? 5 : 10; CH.helped = false;
+  chainUpdateHud(); sfx('ding');
+  chMsg(['接得好！', '太棒了！', '好厲害！', '答對了！'][Math.floor(Math.random() * 4)], 'ok');
+  CH.busy = true;
+  setTimeout(() => chainComputer(chUnit(w)), 800);
+}
+// 電腦接：unit 是要接的字／字母；null 表示電腦先開始
+function chainComputer(unit){
+  if (!CH.on) return;
+  CH.busy = true;
+  let pool;
+  if (unit === null){
+    // 電腦先說：挑一個好接的常用詞
+    pool = CH.mode === 'en' ? [...enChainMap().keys()].filter(w => EN_BANK[0].concat(EN_BANK[1]).some(q => q.w === w))
+      : CH.mode === 'idiom' ? Object.keys(KID_STORIES).filter(w => IDIOMS[w])
+      : ['蘋果', '太陽', '學校', '朋友', '老師', '小狗', '天空', '花園', '電話', '書包', '火車', '月亮'];
+    pool = pool.filter(w => !CH.used.has(w));
+  } else {
+    pool = startsList(CH.mode, unit).filter(w => !CH.used.has(w));
+  }
+  // 優先挑「小朋友聽得懂、又接得下去」的：常用字組成，而且最後一個字（字母）後面還有很多可以接
+  const need = CH.mode === 'idiom' ? 2 : CH.mode === 'en' ? 4 : 6;
+  const cand = pool.slice(0, 80);
+  const easy = cand.filter(w => canContinue(CH.mode, chUnit(w)) >= need);
+  const ranked = (easy.length ? easy : cand).map(w => [w, kidRank(CH.mode, w)]).sort((a, b) => b[1] - a[1]);
+  const pickFrom = ranked.slice(0, 4).map(x => x[0]);
+  const rep = pickFrom[Math.floor(Math.random() * pickFrom.length)];
+  if (!rep){
+    // 電腦接不下去：小朋友贏了
+    CH.score += 50; chainUpdateHud(); sfx('win');
+    const say = '電腦接不下去了，你贏了！加 50 分！';
+    chMsg('🎉 ' + say, 'ok');
+    speak(say + '我們重新開始，電腦先說。', {onEnd: () => { if (CH.on){ CH.target = null; chainComputer(null); } }});
+    return;
+  }
+  CH.used.add(rep);
+  chainCard(rep, 'pc');
+  CH.target = chUnit(rep);
+  chainPrompt();
+  CH.busy = false;
+  const heard = $('#chHeard'); if (heard) heard.textContent = '';
+  if (CH.mode === 'en'){
+    const m = enChainMap().get(rep) || {};
+    chMsg(`電腦說：<b class="en">${esc(rep)}</b>${m.zh ? `（${esc(m.zh)}）` : ''}，換你了！`);
+    speak(rep, {lang: 'en-US', onEnd: () => CH.on && speak(`請用字母 ${CH.target.toUpperCase()} 開頭。`)});
+  } else {
+    const homo = unit && chars(rep)[0] !== unit ? `（用同音字「${chars(rep)[0]}」接「${unit}」）` : '';
+    chMsg(`電腦說：<b>${esc(rep)}</b>${esc(homo)}，換你了！`);
+    speak(`${rep}。請用${CH.target}開頭的${CH_INFO[CH.mode].unit}。`);
+  }
+}
+function chainHelp(){
+  if (!CH.on || CH.busy || CH.helps <= 0) return;
+  const pool = (CH.target ? startsList(CH.mode, CH.target) : (CH.mode === 'en' ? ['apple', 'dog', 'sun'] : CH.mode === 'idiom' ? ['一心一意', '守株待兔', '畫蛇添足'] : ['蘋果', '學校', '朋友'])).filter(w => !CH.used.has(w));
+  if (!pool.length){ chMsg('連求救也找不到可以接的了，你可以按「我接不下去了」。', 'warn'); return; }
+  CH.helps--; CH.helped = true; chainUpdateHud();
+  const picks = pool.slice(0, 80).map(w => [w, kidRank(CH.mode, w)]).sort((a, b) => b[1] - a[1]).slice(0, CH.mode === 'idiom' ? 2 : 3).map(x => x[0]);
+  let html;
+  if (CH.mode === 'idiom'){
+    const brief = w => ((IDIOMS[w][1] || '').replace(/[※◎].*$/s, '').split(/[。\n]/)[0] || '').slice(0, 30);
+    html = '🆘 可以試試看：' + picks.map(w => `<span class="ch-sug"><b>${esc(w)}</b><small>${esc(brief(w))}</small></span>`).join('');
+  } else if (CH.mode === 'en'){
+    html = '🆘 可以試試看：' + picks.map(w => { const m = enChainMap().get(w) || {}; return `<span class="ch-sug"><b class="en">${m.e || ''} ${esc(w)}</b><small>${esc(m.zh || '')}</small></span>`; }).join('');
+  } else {
+    html = '🆘 可以試試看：' + picks.map(w => `<span class="ch-sug"><b>${esc(w)}</b><small>${esc(chZy(w))}</small></span>`).join('');
+  }
+  chMsg(html + `<span class="ch-left">（還剩 ${CH.helps} 次求救）</span>`, 'help');
+  if (CH.mode === 'en') speak(picks[0], {lang: 'en-US'}); else speak('可以說：' + picks[0]);
+}
+function chainEnd(gaveUp){
+  if (!CH.on) return;
+  const mode = CH.mode, info = CH_INFO[mode];
+  const could = CH.target ? startsList(mode, CH.target).filter(w => !CH.used.has(w)).slice(0, mode === 'idiom' ? 3 : 4) : [];
+  const newBest = CH.count > 0 && setBest('chain-' + mode, CH.count);
+  const words = CH.list.map(x => x.w);
+  chainStop(); stopSpeak();
+  const nStar = CH.count >= 10 ? 3 : CH.count >= 5 ? 2 : CH.count > 0 ? 1 : 0;
+  const look = w => mode === 'en' ? searchEnglish(w) : search(w);
+  main.innerHTML = `<section class="panel game-intro">
+    <h2>${gaveUp ? '接龍結束' : '遊戲結束'}</h2>
+    <div class="g-stars" style="justify-content:center">${[0, 1, 2].map(i => `<span class="${i < nStar ? 'on' : ''}" style="animation-delay:${i * 0.25}s">★</span>`).join('')}</div>
+    <div class="sp-final">${CH.score} 分</div>
+    <p style="margin:0;font-size:20px">${info.name}・你接了 ${CH.count} 個${newBest ? '・<b style="color:var(--red)">新紀錄！</b>' : ''}</p>
+    ${could.length ? `<p style="margin:12px 0 4px">剛剛「${esc(mode === 'en' ? CH.target.toUpperCase() : CH.target)}」開頭，其實可以接：</p><div class="words" style="justify-content:center">${could.map(w => `<button class="${mode === 'en' ? 'en' : ''}" data-q="${esc(w)}">${esc(w)}</button>`).join('')}</div>` : ''}
+    ${words.length ? `<p style="margin:12px 0 4px">這次接龍的${info.unit}（點一下可以查字典）：</p><div class="words" style="justify-content:center">${words.map(w => `<button class="${mode === 'en' ? 'en' : ''}" data-q="${esc(w)}">${esc(w)}</button>`).join('')}</div>` : ''}
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px">
+      <button class="big-start" id="chAgain">再玩一次</button>
+      <button class="big-start play" id="chHub">換別的遊戲</button>
+    </div>
+  </section>`;
+  main.querySelectorAll('[data-q]').forEach(b => b.onclick = () => look(b.dataset.q));
+  $('#chAgain').onclick = () => startChain(mode);
+  $('#chHub').onclick = openGameHub;
+  speak(`你接了${CH.count}個，得了${CH.score}分！${CH.count >= 5 ? '好厲害！' : '下次再挑戰！'}`);
+}
+// 遊戲裡的大麥克風：跟底部的麥克風一樣，按住說、放開就停
+function bindHoldMic(btn){
+  let hold = false, t0 = 0;
+  btn.addEventListener('pointerdown', ev => {
+    ev.preventDefault();
+    try { btn.setPointerCapture(ev.pointerId); } catch(e){}
+    if (CH.busy) return;
+    if (listening){ stopListen(); return; }
+    hold = true; t0 = Date.now();
+    startListen();
+  });
+  const up = () => { if (!hold) return; hold = false; if (Date.now() - t0 > 700) stopListen(); };
+  btn.addEventListener('pointerup', up);
+  btn.addEventListener('pointercancel', up);
+  btn.addEventListener('contextmenu', ev => ev.preventDefault());
+  btn.addEventListener('click', ev => { if (ev.detail === 0) listening ? stopListen() : startListen(); });
 }
 
 const welcomeHTML = main.innerHTML;
