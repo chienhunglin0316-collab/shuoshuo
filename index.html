@@ -698,25 +698,79 @@ window.__sr = (type, text) => {
   if (G.nativeListen){ gameNativeSr(type, text); return; }   // 遊戲中的語音交給遊戲處理
   if (type === 'rms' || (type === 'final' && !listening)) return;   // 遊戲剛結束時晚到的結果，不要拿來查字
   if (type === 'start'){ listening = true; micBtn.classList.add('listening'); setHear(listenLang === 'zh-TW' ? '我在聽，請說…' : "I'm listening…", true); }
-  else if (type === 'partial'){ if (text) setHear('「' + text + '」'); }
+  else if (type === 'partial'){ if (text){ lastPartial = text; setHear('「' + text + '」'); } }
   else if (type === 'final'){ finalText = text; setHear('「' + text + '」'); }
-  else if (type === 'error'){ setHear(SR_MSG[text] || '沒聽清楚，再說一次好嗎？', true); }
-  else if (type === 'end'){ listening = false; micBtn.classList.remove('listening'); if (finalText){ const t = finalText; finalText = ''; handleInput(t, {voice:true}); } }
+  else if (type === 'error'){ if (text !== 'aborted') setHear(SR_MSG[text] || '沒聽清楚，再說一次好嗎？', true); }
+  else if (type === 'end'){
+    clearRecTimers(); listening = false; micBtn.classList.remove('listening');
+    // 放開麥克風時，瀏覽器有時只給「還沒確定」的結果：也拿來查
+    const t = finalText || lastPartial; finalText = ''; lastPartial = '';
+    if (t) handleInput(t, {voice:true});
+  }
 };
-function stopListen(){ if (!listening) return; NATIVE ? window.Android.stopListen() : rec && rec.stop(); }
-function startListen(){
-  stopSpeak();
-  if (listening) return;
-  finalText = '';
-  if (NATIVE){ window.Android.listen(listenLang); return; }
-  if (!SR){ setHear(SR_MSG.unavailable, true); return; }
-  rec = new SR(); rec.lang = listenLang; rec.interimResults = true; rec.continuous = false;
-  rec.onstart = () => window.__sr('start');
-  rec.onresult = e => { let t = ''; let fin = false; for (const r of e.results){ t += r[0].transcript; if (r.isFinal) fin = true; } window.__sr(fin ? 'final' : 'partial', t); };
-  rec.onerror = e => window.__sr('error', e.error);
-  rec.onend = () => window.__sr('end');
-  try { rec.start(); } catch(e){ setHear('麥克風啟動失敗，請再按一次', true); }
+/* 網頁版語音辨識的保護：平板的 Chrome 在 app 剛念完結果後，偶爾會「開始了卻不會結束」，
+   麥克風就一直紅著、按了也沒反應。所以每一段都設時間上限，時間到沒收到結束訊號就強制收掉、恢復成可以再按。 */
+let lastPartial = '', recWatch = 0, stopWatch = 0, startWatch = 0;
+function clearRecTimers(){ clearTimeout(recWatch); clearTimeout(stopWatch); clearTimeout(startWatch); }
+function killRec(r){ if (!r) return; r.onstart = r.onresult = r.onerror = r.onend = null; try { r.abort(); } catch(e){} }
+function resetMic(msg){
+  clearRecTimers(); listening = false; micBtn.classList.remove('listening');
+  if (msg) setHear(msg, true);
 }
+function forceEnd(r){
+  if (r !== rec) return;
+  killRec(r); rec = null;
+  const t = finalText || lastPartial; finalText = ''; lastPartial = '';
+  resetMic(t ? '' : '沒聽清楚，再按一次麥克風說說看');
+  if (t) handleInput(t, {voice:true});
+}
+function stopListen(){
+  if (!listening) return;
+  if (NATIVE){ window.Android.stopListen(); return; }
+  const r = rec;
+  if (!r){ resetMic(listenLang === 'zh-TW' ? '按住麥克風，說「幫我查○○」，說完放開' : '按住麥克風，用英文說，說完放開'); return; }
+  r.__stopping = true;
+  try { r.stop(); } catch(e){}
+  clearTimeout(stopWatch);
+  stopWatch = setTimeout(() => forceEnd(r), 1500);   // 停止後 1.5 秒還沒結束，就強制結束
+}
+function startListen(){
+  if (listening) return;
+  finalText = ''; lastPartial = '';
+  if (NATIVE){ stopSpeak(); window.Android.listen(listenLang); return; }
+  if (!SR){ setHear(SR_MSG.unavailable, true); return; }
+  // 先把舊的辨識完全收掉
+  killRec(rec); rec = null;
+  listening = true; micBtn.classList.add('listening');
+  setHear(listenLang === 'zh-TW' ? '準備中…' : 'Getting ready…', true);
+  // app 正在念東西時，先停掉並等一下，讓麥克風拿得到聲音
+  const wasSpeaking = !!(window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending));
+  stopSpeak();
+  setTimeout(() => {
+    if (!listening || rec) return;      // 等待中被取消了
+    const r = new SR(); rec = r;
+    r.lang = listenLang; r.interimResults = true; r.continuous = false;
+    r.onstart = () => {
+      if (rec !== r) return;
+      r.__started = true;
+      clearTimeout(startWatch);
+      window.__sr('start');
+      if (r.__stopping) return;          // 開始前就被按停了：交給停止的計時器處理
+      clearTimeout(recWatch);
+      recWatch = setTimeout(() => { if (rec === r) stopListen(); }, 12000);   // 一次最多聽 12 秒
+    };
+    r.onresult = e => { if (rec !== r) return; let t = ''; let fin = false; for (const x of e.results){ t += x[0].transcript; if (x.isFinal) fin = true; } window.__sr(fin ? 'final' : 'partial', t); };
+    r.onerror = e => { if (rec === r) window.__sr('error', e.error); };
+    r.onend = () => { if (rec !== r) return; rec = null; window.__sr('end'); };
+    try { r.start(); }
+    catch(e){ killRec(r); rec = null; resetMic('麥克風啟動失敗，請再按一次'); return; }
+    // 3 秒內都沒開始，就當作卡住
+    clearTimeout(startWatch);
+    startWatch = setTimeout(() => { if (rec === r && !micStarted(r)) { killRec(r); rec = null; resetMic('麥克風沒有反應，請再按一次'); } }, 3000);
+  }, wasSpeaking ? 350 : 0);
+}
+const micStarted = r => r && r.__started;
+document.addEventListener('visibilitychange', () => { if (document.hidden && listening && !NATIVE){ killRec(rec); rec = null; resetMic(); } });
 /* 按住麥克風才錄音，放開就停止並開始查詢；只按一下則說完自動停止 */
 let holding = false, holdStart = 0;
 micBtn.addEventListener('pointerdown', ev => {
@@ -741,9 +795,16 @@ function stripAsk(s){
   s = s.replace(/^(你好|哈囉|嗨|請問|請你|請|麻煩你?)+/, '');
   s = s.replace(/^(可以)?(幫我|幫忙|替我|我想要|我想|我要)?(查一下|查查看|查詢|查查|搜尋|找一下|找找|查|找|看看|看一下)+/, '');
   s = s.replace(/^(一下|這個|那個|一個)/, '');
-  s = s.replace(/(這個|那個|的)?(國字|生字|字|詞語|詞|語詞|成語|單字|句子)?(怎麼寫|怎麼唸|怎麼念|怎麼拼|是什麼意思|什麼意思|的意思|意思)?(呢|嗎|啊|喔|好嗎|好不好|謝謝)*$/, '');
-  s = s.replace(/(這個|那個)?(國字|生字|字|詞語|語詞|詞|成語|單字)$/, '');
-  return s;
+  // 本身就是字典裡的詞（例如「單字」「名字」「文字」「歌詞」），就不要再刪字尾
+  const isWord = t => !!t && !!((DICT && DICT[t]) || (IDIOMS && IDIOMS[t]));
+  if (isWord(s)) return s;
+  // 先去掉問句的尾巴：怎麼寫、什麼意思、呢、嗎……
+  const tail = s.replace(/(怎麼寫|怎麼唸|怎麼念|怎麼拼|是什麼意思|什麼意思|的意思|意思)?(呢|嗎|啊|喔|好嗎|好不好|謝謝)*$/, '');
+  if (isWord(tail)) return tail;
+  // 再去掉「這個字」「這個詞」之類的說明；去掉後要還有字，而且不是把一個詞切壞
+  const core = tail.replace(/(這個|那個|的)?(國字|生字|字|詞語|語詞|詞|成語|單字|句子)$/, '');
+  if (core && (isWord(core) || !isWord(tail))) return core;
+  return tail || s;
 }
 function parseInput(raw){
   let s = raw.trim();
