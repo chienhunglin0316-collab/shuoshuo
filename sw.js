@@ -2,7 +2,7 @@
    - 網頁本體與教育部字典資料：安裝時就存好，沒網路也能查
    - 遊戲語音模型：第一次玩遊戲時下載，之後一直留著（版本更新也不用重新下載）
    - 字型、筆順資料等外部檔案：用過一次就存起來 */
-const VERSION = '20261124200444';
+const VERSION = '20261124201100';
 const CORE = 'ssd-core-' + VERSION;
 const MODELS = 'ssd-models-1';
 const RUNTIME = 'ssd-runtime-1';
@@ -12,7 +12,10 @@ const CORE_FILES = ['index.html', 'hanzi-writer.min.js', 'dict.json', 'idioms.js
 const LIVE = ['api.dictionaryapi.dev', 'api.mymemory.translated.net', 'api.tatoeba.org'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CORE).then(c => c.addAll(CORE_FILES)).then(() => self.skipWaiting()));
+  // cache:'reload'：一定向網站拿最新的檔案，不用瀏覽器暫存的舊檔（GitHub 會讓瀏覽器暫存 10 分鐘）
+  e.waitUntil(caches.open(CORE)
+    .then(c => c.addAll(CORE_FILES.map(f => new Request(f, {cache: 'reload'}))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
